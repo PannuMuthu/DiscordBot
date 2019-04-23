@@ -17,6 +17,8 @@ async def on_ready():
 @client.event
 async def on_message(message):
 
+    channel = message.channel
+
     if client.user.mentioned_in(message) and ("@everyone" not in message.content) and ("@here" not in message.content):
         await channel.send("Hi!")
 
@@ -24,7 +26,8 @@ async def on_message(message):
 
 @client.command(pass_context = True)
 async def ping(context):
-    awair channel.send('pong!')
+    channel = context.message.channel
+    await channel.send('pong!')
 
 
 client.run(TOKEN)
